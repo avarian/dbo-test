@@ -30,7 +30,7 @@ services:
       MYSQL_USER: varian
       MYSQL_PASSWORD: varian
     volumes:
-      - ./data/mysql:/var/lib/mysql
+      - data-mysql:/var/lib/mysql
     ports:
       - "3306:3306"
 
@@ -39,4 +39,5 @@ networks:
     driver: bridge
 
 volumes:
+  data-mysql:
   go-pkg-data:
