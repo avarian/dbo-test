@@ -11,9 +11,9 @@ verbose: false
 mysql:
   host: "mysql"
   port: "3306"
-  database: "test"
+  database: "dbo-test"
   user: "root"
-  password: ""
+  password: "varian"
 
 # Redis connection profile
 # redis:
