@@ -20,6 +20,7 @@ func NewServer(listenAddress string,
 	account *controllers.AccountController,
 	brand *controllers.BrandController,
 	category *controllers.CategoryController,
+	item *controllers.ItemController,
 ) *Server {
 
 	router := gin.Default()
@@ -40,13 +41,21 @@ func NewServer(listenAddress string,
 			brandApi.PUT("/:id", brand.PutEditBrand)
 			brandApi.DELETE("/:id", brand.DeleteBrand)
 		}
-		categoryApi := api.Group("/brand").Use(Auth())
+		categoryApi := api.Group("/category").Use(Auth())
 		{
 			categoryApi.GET("/all", category.GetCategories)
 			categoryApi.GET("/:id", category.GetCategory)
 			categoryApi.POST("/", category.PostCreateCategory)
 			categoryApi.PUT("/:id", category.PutEditCategory)
 			categoryApi.DELETE("/:id", category.DeleteCategory)
+		}
+		itemApi := api.Group("/item").Use(Auth())
+		{
+			itemApi.GET("/all", item.GetItems)
+			itemApi.GET("/:id", item.GetItem)
+			itemApi.POST("/", item.PostCreateItem)
+			itemApi.PUT("/:id", item.PutEditItem)
+			itemApi.DELETE("/:id", item.DeleteItem)
 		}
 
 		secured := api.Use(Auth())

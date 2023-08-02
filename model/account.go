@@ -20,4 +20,6 @@ type Account struct {
 	CreatedAt   *time.Time      `json:"created_at" gorm:"default:current_timestamp"`
 	UpdatedAt   *time.Time      `json:"updated_at" gorm:"default:current_timestamp"`
 	DeletedAt   *gorm.DeletedAt `json:"deleted_at"`
+
+	Item *[]Item `json:"item,omitempty" gorm:"constraint:OnUpdate:CASCADE,OnDelete:RESTRICT;foreignKey:AccountID;references:ID"`
 }

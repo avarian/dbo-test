@@ -169,21 +169,6 @@ func (s *BrandController) PutEditBrand(c *gin.Context) {
 }
 
 func (s *BrandController) DeleteBrand(c *gin.Context) {
-	// bind data
-	var req PostCreateBrandRequest
-	if err := c.ShouldBind(&req); err != nil {
-		log.WithField("reason", err).Error("error Binding")
-		c.AbortWithStatusJSON(http.StatusUnprocessableEntity, gin.H{"error": err.Error()})
-		return
-	}
-	// validate
-	if err := s.validator.Validate.Struct(&req); err != nil {
-		log.WithField("reason", err).Error("invalid Request")
-		errs := err.(validator.ValidationErrors)
-		c.AbortWithStatusJSON(http.StatusUnprocessableEntity, gin.H{"error": errs.Translate(s.validator.Trans)})
-		return
-	}
-
 	// log
 	logCtx := log.WithFields(log.Fields{
 		"api": "PutEditBrand",

@@ -13,7 +13,7 @@ type Item struct {
 	CategoryID  uint            `json:"category_id" gorm:"not null"`
 	Name        string          `json:"name" gorm:"not null;size:255"`
 	Description string          `json:"description"`
-	Price       string          `json:"price"  gorm:"not null;size:255"`
+	Price       float64         `json:"price"  gorm:"not null;size:255"`
 	Qty         int             `json:"qty"  gorm:"not null"`
 	CreatedBy   string          `json:"created_by" gorm:"size:255;default:SYSTEM"`
 	UpdatedBy   *string         `json:"updated_by" gorm:"size:255;default:SYSTEM"`
