@@ -10,7 +10,6 @@ WORKDIR /build
 RUN make linux
 
 FROM alpine:latest
-LABEL maintainer="frengky@tokomodal.co.id"
 
 ARG TIMEZONE=Asia/Jakarta
 

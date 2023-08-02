@@ -14,6 +14,7 @@ type Item struct {
 	Name        string          `json:"name" gorm:"not null;size:255"`
 	Description string          `json:"description"`
 	Price       string          `json:"price"  gorm:"not null;size:255"`
+	Qty         int             `json:"qty"  gorm:"not null"`
 	CreatedBy   string          `json:"created_by" gorm:"size:255;default:SYSTEM"`
 	UpdatedBy   *string         `json:"updated_by" gorm:"size:255;default:SYSTEM"`
 	DeletedBy   *string         `json:"deleted_by" gorm:"size:255"`

@@ -18,6 +18,7 @@ type Server struct {
 func NewServer(listenAddress string,
 	home *controllers.HomeController,
 	account *controllers.AccountController,
+	brand *controllers.BrandController,
 ) *Server {
 
 	router := gin.Default()
@@ -30,9 +31,18 @@ func NewServer(listenAddress string,
 	{
 		api.POST("/login", account.PostLogin)
 		api.POST("/account/register", account.PostRegister)
-		secured := api.Group("/secured").Use(Auth())
+		brandApi := api.Group("/brand").Use(Auth())
 		{
-			secured.GET("/ping", home.GetHome)
+			brandApi.GET("/all", brand.GetBrands)
+			brandApi.GET("/:id", brand.GetBrand)
+			brandApi.POST("/", brand.PostCreateBrand)
+			brandApi.PUT("/:id", brand.PutEditBrand)
+			brandApi.DELETE("/:id", brand.DeleteBrand)
+		}
+
+		secured := api.Use(Auth())
+		{
+			secured.GET("/brand", brand.GetBrand)
 		}
 	}
 

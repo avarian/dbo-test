@@ -122,7 +122,7 @@ func (s *AccountController) PostLogin(c *gin.Context) {
 	// log
 	logCtx := log.WithFields(log.Fields{
 		"email": req.Email,
-		"api":   "PostRegister",
+		"api":   "PostLogin",
 	})
 
 	var account model.Account
