@@ -30,6 +30,10 @@ func NewServer(listenAddress string,
 	{
 		api.POST("/login", account.PostLogin)
 		api.POST("/account/register", account.PostRegister)
+		secured := api.Group("/secured").Use(Auth())
+		{
+			secured.GET("/ping", home.GetHome)
+		}
 	}
 
 	httpServer := &http.Server{
