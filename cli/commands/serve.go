@@ -50,11 +50,13 @@ func serveCommand() (err error) {
 	home := controllers.NewHomeController()
 	account := controllers.NewAccountController(db, validator, viper.GetString("jwt_secret"))
 	brand := controllers.NewBrandController(db, validator)
+	category := controllers.NewCategoryController(db, validator)
 
 	server := http.NewServer(viper.GetString("listen_address"),
 		home,
 		account,
 		brand,
+		category,
 	)
 
 	//
