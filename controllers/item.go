@@ -14,7 +14,7 @@ import (
 )
 
 type PostCreateItemRequest struct {
-	BrandID     int     `json:"item_id" validate:"required"`
+	BrandID     int     `json:"brand_id" validate:"required"`
 	CategoryID  int     `json:"category_id" validate:"required"`
 	Name        string  `json:"name" validate:"required"`
 	Description string  `json:"description" validate:"required"`
@@ -23,7 +23,7 @@ type PostCreateItemRequest struct {
 }
 
 type PutEditItemRequest struct {
-	BrandID     int     `json:"item_id" validate:"required"`
+	BrandID     int     `json:"brand_id" validate:"required"`
 	CategoryID  int     `json:"category_id" validate:"required"`
 	Name        string  `json:"name" validate:"required"`
 	Description string  `json:"description" validate:"required"`
