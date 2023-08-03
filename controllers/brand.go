@@ -177,7 +177,7 @@ func (s *BrandController) DeleteBrand(c *gin.Context) {
 	id := c.Param("id")
 
 	var brand model.Brand
-	if result := s.db.Where("id = ?", id).Unscoped().Delete(&brand); result.Error != nil || result.RowsAffected == 0 {
+	if result := s.db.Where("id = ?", id).Delete(&brand); result.Error != nil || result.RowsAffected == 0 {
 		err := errors.New("not found")
 		if result.Error != nil {
 			err = result.Error

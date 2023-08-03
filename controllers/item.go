@@ -214,7 +214,7 @@ func (s *ItemController) DeleteItem(c *gin.Context) {
 	s.db.Where("email = ?", username).Find(&account)
 
 	var item model.Item
-	if result := s.db.Where("id = ? AND account_id", id, account.ID).Unscoped().Delete(&item); result.Error != nil || result.RowsAffected == 0 {
+	if result := s.db.Where("id = ? AND account_id", id, account.ID).Delete(&item); result.Error != nil || result.RowsAffected == 0 {
 		err := errors.New("not found")
 		if result.Error != nil {
 			err = result.Error

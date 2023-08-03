@@ -177,7 +177,7 @@ func (s *CategoryController) DeleteCategory(c *gin.Context) {
 	id := c.Param("id")
 
 	var category model.Category
-	if result := s.db.Where("id = ?", id).Unscoped().Delete(&category); result.Error != nil || result.RowsAffected == 0 {
+	if result := s.db.Where("id = ?", id).Delete(&category); result.Error != nil || result.RowsAffected == 0 {
 		err := errors.New("not found")
 		if result.Error != nil {
 			err = result.Error
